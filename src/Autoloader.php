@@ -58,22 +58,15 @@ class Autoloader
     {
         $prefix = $class;
 
-        // Work backwards through the namespace names of the fully-qualified
-        // class name to find a mapped file name.
         while (false !== ($position = strrpos($prefix, '\\'))) {
-            // Tetain the trailing namespace separator in the prefix.
             $prefix = substr($class, 0, $position + 1);
-
-            // The rest is the relative class name.
             $relativeClass = substr($class, $position + 1);
 
-            // Try to load a mapped file for the prefix and relative class.
             if ($mappedFile = $this->loadMappedFile($prefix, $relativeClass)) {
                 return $mappedFile;
             }
 
-            // Remove the trailing namespace separator for the next iteration
-            // of strrpos().
+            // Remove the trailing namespace separator for the next iteration.
             $prefix = rtrim($prefix, '\\');
         }
 

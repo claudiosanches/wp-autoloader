@@ -22,6 +22,8 @@ class Autoloader
 
     /**
      * Register loader with SPL autoloader stack.
+     *
+     * @codeCoverageIgnore
      */
     public function register()
     {

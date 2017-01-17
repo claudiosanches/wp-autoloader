@@ -23,7 +23,7 @@ use ClaudioSanches\WPAutoloader\Autoloader;
 $autoloader = new Autoloader();
 
 // Add namespace.
-$autoloader->addNamespace('ClaudioSanches\Foo\Bar');
+$autoloader->addNamespace('ClaudioSanches\Foo\Bar', __DIR__ . '/src');
 
 // Register all autoload.
 $autoloader->register();

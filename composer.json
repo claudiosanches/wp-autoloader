@@ -1,5 +1,5 @@
 {
-  "name": "claudiosanches/wpautoloader",
+  "name": "claudiosanches/wp-autoloader",
   "description": "Autoload classes following WordPress naming convertions",
   "type": "library",
   "license": "MIT",

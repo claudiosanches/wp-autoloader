@@ -8,9 +8,11 @@ php:
   - hhvm
 
 install:
-  - travis_retry composer install --no-interaction --prefer-source
+  - travis_retry composer install --no-interaction --prefer-source --ignore-platform-reqs
 
 script:
   - vendor/bin/phpunit --verbose --coverage-clover=coverage.clover
+
+after_script:
   - wget https://scrutinizer-ci.com/ocular.phar
   - php ocular.phar code-coverage:upload --format=php-clover coverage.clover

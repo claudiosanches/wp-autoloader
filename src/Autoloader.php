@@ -34,29 +34,17 @@ class Autoloader
      * @param string $prefix  The namespace prefix.
      * @param string $baseDir A base directory for class files in the
      * namespace.
-     * @param bool   $prepend If true, prepend the base directory to the stack
-     * instead of appending it; this causes it to be searched first rather
-     * than last.
      */
-    public function addNamespace(string $prefix, string $baseDir, bool $prepend = false)
+    public function addNamespace(string $prefix, string $baseDir)
     {
-        // Normalize namespace prefix.
-        $prefix = trim($prefix, '\\') . '\\';
-
-        // Normalize the base directory with a trailing separator.
+        $prefix  = trim($prefix, '\\') . '\\';
         $baseDir = rtrim($baseDir, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
 
-        // Initialize the namespace prefix array.
         if (false === isset($this->prefixes[$prefix])) {
             $this->prefixes[$prefix] = [];
         }
 
-        // Retain the base directory for the namespace prefix.
-        if ($prepend) {
-            array_unshift($this->prefixes[$prefix], $baseDir);
-        } else {
-            array_push($this->prefixes[$prefix], $baseDir);
-        }
+        array_push($this->prefixes[$prefix], $baseDir);
     }
 
     /**
@@ -68,7 +56,6 @@ class Autoloader
      */
     public function loadClass($class): string
     {
-        // The current namespace prefix.
         $prefix = $class;
 
         // Work backwards through the namespace names of the fully-qualified
@@ -81,7 +68,7 @@ class Autoloader
             $relativeClass = substr($class, $position + 1);
 
             // Try to load a mapped file for the prefix and relative class.
-            if ( $mappedFile = $this->loadMappedFile($prefix, $relativeClass) ) {
+            if ($mappedFile = $this->loadMappedFile($prefix, $relativeClass)) {
                 return $mappedFile;
             }
 
@@ -90,7 +77,6 @@ class Autoloader
             $prefix = rtrim($prefix, '\\');
         }
 
-        // No class found.
         return '';
     }
 
@@ -105,8 +91,7 @@ class Autoloader
      */
     protected function loadMappedFile($prefix, $relativeClass)
     {
-        // Are there any base directories for this namespace prefix?
-        if (isset($this->prefixes[$prefix]) === false) {
+        if (false === isset($this->prefixes[$prefix])) {
             return '';
         }
 
@@ -122,7 +107,6 @@ class Autoloader
             }
         }
 
-        // Not found.
         return '';
     }
 
@@ -145,6 +129,9 @@ class Autoloader
      */
     protected function getRelativeFile(string $relativeClass): string
     {
+        // Class file names should be based on the class name with
+        // "class-" prepended and the underscores in the class name
+        // replaced with hyphens.
         $relative = $this->normalizePath($relativeClass);
         $pieces   = explode('\\', $relative);
         $last     = array_pop($pieces);

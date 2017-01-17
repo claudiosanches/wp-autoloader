@@ -45,9 +45,6 @@ class AutoloaderTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    /**
-     * @covers ClaudioSanches\WPAutoloader\Autoloader::requireFile
-     */
     public function testExistingFile()
     {
         $actual = $this->loader->loadClass('Foo\Bar\Name');
@@ -71,9 +68,6 @@ class AutoloaderTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('', $actual);
     }
 
-    /**
-     * @covers ClaudioSanches\WPAutoloader\Autoloader::requireFile
-     */
     public function testDeepFile()
     {
         $actual = $this->loader->loadClass('Foo\Bar\Baz\Dib\Zim\Gir\Name');
@@ -81,9 +75,6 @@ class AutoloaderTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($expect, $actual);
     }
 
-    /**
-     * @covers ClaudioSanches\WPAutoloader\Autoloader::requireFile
-     */
     public function testConfusion()
     {
         $actual = $this->loader->loadClass('Foo\Bar\Foo_Bar');

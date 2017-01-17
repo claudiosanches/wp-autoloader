@@ -139,6 +139,8 @@ class Autoloader
     /**
      * If a file exists, require it from the file system.
      *
+     * @codeCoverageIgnore
+     *
      * @param  string $file The file to require.
      * @return bool         True if the file exists, false if not.
      */

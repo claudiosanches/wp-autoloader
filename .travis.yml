@@ -5,10 +5,9 @@ sudo: false
 php:
   - 7.1
   - 7.0
-  - hhvm
 
 install:
-  - travis_retry composer install --no-interaction --prefer-source --ignore-platform-reqs
+  - travis_retry composer install --no-interaction --prefer-source
 
 script:
   - vendor/bin/phpunit --verbose --coverage-clover=coverage.clover

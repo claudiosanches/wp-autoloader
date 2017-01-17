@@ -46,7 +46,7 @@ class AutoloaderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Autoloader::requireFile
+     * @covers ClaudioSanches\WPAutoloader\Autoloader::requireFile
      */
     public function testExistingFile()
     {
@@ -67,12 +67,12 @@ class AutoloaderTest extends \PHPUnit_Framework_TestCase
 
     public function testWrongFile()
     {
-        $actual = $this->loader->loadClass('No_Vendor\No_Package\No_Class.php');
+        $actual = $this->loader->loadClass('Foo\Bar\Name_Test\Wrong.php');
         $this->assertEquals('', $actual);
     }
 
     /**
-     * @covers Autoloader::requireFile
+     * @covers ClaudioSanches\WPAutoloader\Autoloader::requireFile
      */
     public function testDeepFile()
     {
@@ -82,7 +82,7 @@ class AutoloaderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Autoloader::requireFile
+     * @covers ClaudioSanches\WPAutoloader\Autoloader::requireFile
      */
     public function testConfusion()
     {

@@ -1,6 +1,6 @@
 # WPAutoloader
 
-Loads namespaces and classes following the [WordPress naming convertions](https://make.wordpress.org/core/handbook/best-practices/coding-standards/php/#naming-conventions).
+Loads namespaces and classes following the [WordPress naming conventions](https://make.wordpress.org/core/handbook/best-practices/coding-standards/php/#naming-conventions).
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/claudiosanches/wp-autoloader/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/claudiosanches/wp-autoloader/?branch=master)
 [![Code Climate](https://codeclimate.com/github/claudiosanches/wp-autoloader/badges/gpa.svg)](https://codeclimate.com/github/claudiosanches/wp-autoloader)

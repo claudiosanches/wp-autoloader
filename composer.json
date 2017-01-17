@@ -1,0 +1,31 @@
+{
+  "name": "claudiosanches/wpautoloader",
+  "description": "Autoload WordPress classes following WordPress naming convertions",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Claudio Sanches",
+      "homepage": "https://claudiosmweb.com"
+    }
+  ],
+  "keywords": [
+    "wordpress"
+  ],
+  "require": {
+    "php": ">= 7.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "ClaudioSanches\\WPAutoloader\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": { 
+      "ClaudioSanches\\WPAutoloader\\Tests\\": "tests"
+    }
+  }
+}
